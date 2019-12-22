@@ -6,4 +6,13 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  # /ユーザ名/タスク番号 みたいなパス
+  resources :user, only: [] do
+    resources :tasks, only: :index
+  end
+
+  # /タスク番号 にPOSTしたらcreate
+  resources :tasks, only: [:create, :update]
+
 end
