@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   # /タスク番号 にPOSTしたらcreate
   resources :tasks, only: [:create, :update]
 
+  namespace :api do
+    get 'login', to: 'login#show'
+    resources 'tasks', only: [:index, :create, :update]
+  end
+
 end
